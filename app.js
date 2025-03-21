@@ -45,7 +45,7 @@ app.get("/sobre", (req, res) => {
 
 app.get("/login", (req, res) => {
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/login
-  res.send(login);
+  res.render("login");
 });
 
 app.get("/cadastro", (req, res) => {
