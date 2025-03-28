@@ -1,5 +1,6 @@
 const express = require("express"); // Importa lib do Express
 const sqlite3 = require("sqlite3"); // Importa lib do sqlite3
+const bodyParser = require("body-parser"); //Importa o body-parser
 
 const app = express(); // Instância para o uso do Express
 
@@ -11,17 +12,21 @@ const db = new sqlite3.Database("user.db"); //Instância para uso do Sqlite3, e 
 db.serialize(() => {
   // Este método permite enviar comandos SQL em modo 'sequencial'
   db.run(
-    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)"
+    `CREATE TABLE IF NOT EXISTS users 
+    (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT, email TEXT, celular TEXT, cpf TEXT, rg TEXT)`
   );
 });
 
+//é a váriavel interna do node uqe guarda o caminho absoluto do projeto no SO
 app.use("/static", express.static(__dirname + "/static"));
+
+//middleware para processar as requisições do body parameters do cliente
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //Configurar EJS como o motor de visualização
 app.set("view engine", "ejs");
 
 // Cria conexão com o banco de dados
-
 const index =
   "<a href='/sobre'>Sobre </a><a href='/cadastro'>Cadastro </a><a href='/login'>Login </a>";
 const sobre = 'Você está na página "Sobre"<br><a href="/">Voltar</a>';
@@ -51,6 +56,18 @@ app.get("/login", (req, res) => {
 app.get("/cadastro", (req, res) => {
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/cadastro
   res.send(cadastro);
+});
+
+app.post("/cadastro", (req, res) => {
+  !req.body
+    ? console.log(JSON.stringify(req.body))
+    : console.log(`Body vazio: ${req.body}`);
+  res.send(cadastro);
+
+  //Colocar aqui as validações e inclusão nio banco de dados do cadastro do usuãrio
+  res.send(
+    `Bem-vindo usuário:${req.body.username}, seu email é ${req.body.email}`
+  );
 });
 
 //app.listen() deve ser o último comando da aplicação (app.js)
