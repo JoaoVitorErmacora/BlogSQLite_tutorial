@@ -1,1 +1,4 @@
 node_modules
+build
+*.db
+BlogSQLite_tutorial_old
