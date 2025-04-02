@@ -6,25 +6,44 @@
     <title>Atividade formulário</title>
 
     <!-- Link CSS externo -->
-    <link
-      rel="stylesheet"
-      href="/static/styles/styles.css"
-      class="stylesheet"
-    />
+<link rel="stylesheet" href="/static/styles/styles.css">
 
     <!-- Link JS externo -->
     <script src="static/scripts/validaCadastro.js" defer></script>
   </head>
+
   <body>
+
+    <%- include("menu") %>
+    <!-- <header>
+      <a href="" class="logo">LOGO</a>
+      <nav>
+        <a href="">Home</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/cadastro">Cadastro</a>
+        <a href="/login">Login</a>
+         <a href="/foradecasa">Çugar nenhum</a> 
+      </nav>
+    </header> -->
+    
+    <div class="container_rain">
+      <span class="cloud"></span>
+      <span class="cloud"></span>
+      <span class="cloud"></span>
+    </div>
+
     <section class="container">
       <div class="image_container">
-        <h1>Crie sua conta</h1>
+              <img src="/static/images/wallpaper.jpg" width="100%" height="100%">
+              <img src="/static/images/wallpaper.jpg" width="100%" height="100%">
+
+        <!-- <h1>Crie sua conta</h1>
         <p>
           Compartilhe suas aventuras e <br />
           descubra novos lugares ao redor do mundo!
         </p>
       </div>
-      <form id="cadastroForm" method="post" action="/cadastro">
+      <form id="cadastroForm" method="post" action="/cadastro"> -->
         <div class="title">
           <h1>Cadastre-se</h1>
           <p>Preencha os campos abaixo e torne-se parte da nossa comunidade</p>
@@ -74,5 +93,6 @@
         </div>
       </form>
     </section>
+    <%- include("footer") %>
   </body>
 </html>
