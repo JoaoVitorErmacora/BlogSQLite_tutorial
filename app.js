@@ -61,19 +61,26 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+app.get("/usuarios", (req, res) => {
+  const query = "SELECT * FROM users";
+  db.all(query, (err, row) => {
+    console.log();
+  });
+});
+
 //POST DO CADASTRO
 app.post("/cadastro", (req, res) => {
   !req.body
     ? console.log(JSON.stringify(req.body))
     : console.log(`Body vazio: ${req.body}`);
 
-  const { username, senha, email, cpf, rg, celular } = req.body;
-
+  const { username, password, email, cpf, rg, celular } = req.body;
   //Colocar aqui as validações e inclusão no banco de dados do cadastro do usuãrio
   //1.Validar usuário
-
   //2. saber se ele já existe no banco
-  query = "SELECT *FROM users WHERE email=? OR cpf=? OR rg=? OR username=?";
+
+  const query =
+    "SELECT *FROM users WHERE email=? OR cpf=? OR rg=? OR username=?";
   db.get(query, [email, cpf, rg, username], (err, row) => {
     if (err) throw err;
     console.log(`${JSON.stringify(row)}`);
