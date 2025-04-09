@@ -64,7 +64,8 @@ app.get("/login", (req, res) => {
 app.get("/usuarios", (req, res) => {
   const query = "SELECT * FROM users";
   db.all(query, (err, row) => {
-    console.log();
+    console.log(`GET/usuarios ${JSON.stringify(row)}`);
+    res.send("Lista de usuários.");
   });
 });
 
