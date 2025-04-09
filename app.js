@@ -53,7 +53,7 @@ app.get("/cadastro", (req, res) => {
 
 app.get("/sobre", (req, res) => {
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/sobre
-  res.send(sobre);
+  res.render("sobre");
 });
 
 app.get("/login", (req, res) => {
