@@ -37,28 +37,35 @@ const cadastro = 'Você está na página "Cadastro"<br><a href="/">Voltar</a>';
 Na ARROW FUNCTION, o primeiro são os dados do servidor (REQUISITION - 'req')
 o segundo, são os dados que serão enviados ao cliente (RESULT - 'res') */
 
-app.get("/", (req, res) => {
+app.get("/index", (req, res) => {
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/
   // res.send(index);
   // res.render("index");
   console.log("GET/index");
-  res.redirect("/cadastro"); //redireciona para a rota cadastro
+  res.redirect("pages/index"); //redireciona para a rota cadastro
 });
 
 app.get("/cadastro", (req, res) => {
   console.log("GET/ cadastro");
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/cadastro
-  res.render("cadastro");
+  res.render("pages/cadastro");
 });
 
 app.get("/sobre", (req, res) => {
+  console.log("GET/login");
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/sobre
-  res.render("sobre");
+  res.render("pages/sobre");
 });
 
 app.get("/login", (req, res) => {
   // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/login
-  res.render("login");
+  res.render("pages/login");
+});
+
+app.get("/dashboard", (req, res) => {
+  console.log("GET/dashboard");
+  // Rota raiz do meu servidor, acesse o browser com o endereço http://localhost:8000/login
+  res.render("pages/dashboard");
 });
 
 app.get("/usuarios", (req, res) => {
@@ -66,7 +73,7 @@ app.get("/usuarios", (req, res) => {
   db.all(query, (err, row) => {
     console.log(`GET/usuarios ${JSON.stringify(row)}`);
     // res.send("Lista de usuários.");
-    res.render("usertable");
+    res.render("partials/usertable");
   });
 });
 
