@@ -116,6 +116,16 @@ app.get("/sobre", (req, res) => {
   console.log("GET/sobre");
 });
 
+app.get("/login", (req, res) => {
+  console.log("/Post/login");
+  res.send("Login ainda não implementado");
+});
+
+app.get("/dashboard", (req, res) => {
+  console.log("GET/dashboard");
+  res.render("dashboard");
+});
+
 //app.listen() deve ser o último comando da aplicação (app.js)
 app.listen(PORT, () => {
   console.log(`Servidor sendo executado na porta ${PORT}!`);
