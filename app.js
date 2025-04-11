@@ -42,7 +42,9 @@ app.get("/index", (req, res) => {
   // res.send(index);
   // res.render("index");
   console.log("GET/index");
-  res.redirect("pages/index"); //redireciona para a rota cadastro
+  res.render("pages/index", {
+    titulo: "Blog da turma i2hna - SESI Nova Odessa",
+  }); //redireciona para a rota cadastro
 });
 
 app.get("/cadastro", (req, res) => {
